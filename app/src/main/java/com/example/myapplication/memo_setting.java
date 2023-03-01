@@ -2,10 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class memo_setting extends AppCompatActivity {
 
@@ -14,8 +17,11 @@ public class memo_setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo_setting);
         initListButton();
+        initSettingsButton();
+        initSortByClick();
+        initSortOrderClick();
+        initSettings();
     }
-
 
     private void initListButton(){
         ImageButton ibList = findViewById(R.id.imageButtonList);
@@ -28,4 +34,75 @@ public class memo_setting extends AppCompatActivity {
             }
         });
     }
+
+    private void initSettingsButton() {
+        ImageButton ibSettings = findViewById(R.id.imageButtonSetting);
+        ibSettings.setEnabled(false);
+        ibSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(memo_setting.this, memo_setting.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+    }
+    private void initSettings() {
+        String sortBy = getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE)
+                .getString("sortField", "subject");
+        String sortOrder = getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE)
+                .getString("sortOrder", "ASC");
+        RadioButton rbSubject = findViewById(R.id.radioSubject);
+        RadioButton rbImportance = findViewById(R.id.radioImportance);
+
+        if (sortBy.equalsIgnoreCase("subject")) {
+            rbSubject.setChecked(true);
+        } else {
+            rbImportance.setChecked(true);
+        }
+
+        RadioButton rbAscending = findViewById(R.id.radioAscending);
+        RadioButton rbDescending = findViewById(R.id.radioDescending);
+
+        if (sortOrder.equalsIgnoreCase("ASC")) {
+            rbAscending.setChecked(true);
+        } else {
+            rbDescending.setChecked(true);
+        }
+    }
+    private void initSortByClick() {
+        RadioGroup rgSortBy = findViewById(R.id.radioGroupSortBy);
+        rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbSubject = findViewById(R.id.radioSubject);
+                if (rbSubject.isChecked()) {
+                    getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
+                            .putString("sortField", "subject").apply();
+                } else {
+                    getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
+                            .putString("sortField", "importance").apply();
+                }
+            }
+        });
+    }
+    private void initSortOrderClick() {
+        RadioGroup rgSortOrder = findViewById(R.id.radioGroupSortOrder);
+        rgSortOrder.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbAscending = findViewById(R.id.radioAscending);
+                if (rbAscending.isChecked()) {
+                    getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
+                            .putString("sortOrder", "ASC").apply();
+                }
+                else{
+                    getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
+                            .putString("sortOrder", "DESC").apply();
+                }
+            }
+        });
+    }
+
 }
