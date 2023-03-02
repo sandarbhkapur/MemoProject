@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MemoAdapter extends RecyclerView.Adapter {
 
@@ -25,8 +28,8 @@ public class MemoAdapter extends RecyclerView.Adapter {
     public class MemoViewHolder extends RecyclerView.ViewHolder{
 
         public TextView textSubject;
-
         public TextView textRating;
+        public TextView textListDate;
         public Button buttonDelete;
 
         public MemoViewHolder(@NonNull View itemView)
@@ -34,6 +37,7 @@ public class MemoAdapter extends RecyclerView.Adapter {
             super(itemView);
             textSubject = itemView.findViewById(R.id.textSubject);
             textRating = itemView.findViewById(R.id.textRating);
+            textListDate = itemView.findViewById(R.id.textListDate);
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
 
             itemView.setTag(this);
@@ -48,6 +52,11 @@ public class MemoAdapter extends RecyclerView.Adapter {
         public TextView getMemoTextRating()
         {
             return textRating;
+        }
+
+        public TextView getMemoTextDate(){
+
+            return textListDate;
         }
 
         public Button getDeleteButton()
@@ -79,6 +88,9 @@ public class MemoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MemoViewHolder cvh = (MemoViewHolder) holder;
         cvh.getMemoTextSubject().setText(memoData.get(position).getSubject());
+        //Displaying Date value in list_item
+        cvh.getMemoTextDate().setText(DateFormat.format("MM/dd/yyyy",
+                memoData.get(position).getDate().getTimeInMillis()).toString());
         //cvh.getMemoTextRating().setText(memoData.get(position).getRating());
         int currentRating = memoData.get(position).getRating();
         if(currentRating == 1)

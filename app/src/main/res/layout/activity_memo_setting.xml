@@ -50,7 +50,7 @@
     <RadioGroup
         android:id="@+id/radioGroupSortBy"
         android:layout_width="375dp"
-        android:layout_height="113dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/navbar"
@@ -71,6 +71,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Importance" />
+
+        <RadioButton
+            android:id="@+id/radioDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date" />
 
 
     </RadioGroup>
