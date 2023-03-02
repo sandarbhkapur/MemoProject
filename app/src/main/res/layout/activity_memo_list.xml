@@ -6,42 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MemoList">
 
-    <LinearLayout
-        android:id="@+id/navbarLayout"
-        android:layout_width="390dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/navbar_background"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="11dp">
-
-        <ImageButton
-            android:id="@+id/imageButtonList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/button_to_display_a_list"
-            app:srcCompat="@drawable/ic_launcher_list_foreground"
-            tools:ignore="RedundantDescriptionCheck" />
-
-
-        <ImageButton
-            android:id="@+id/imageButtonSetting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/button_to_display_a_list_of_setting"
-            app:srcCompat="@drawable/ic_launcher_setting_foreground"
-            tools:ignore="RedundantDescriptionCheck" />
-    </LinearLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/toolbar_background"
+        android:backgroundTint="#481414"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -51,12 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="delete"
+            android:text="Delete"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
-
 
 
         <Button
@@ -64,20 +34,55 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="new"
+            android:backgroundTint="@color/ic_launcher_list_background"
+            android:text="New Note"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:id="@+id/navbarLayout"
+        android:layout_width="415dp"
+        android:layout_height="75dp"
+        android:background="#481414"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/imageButtonList"
+            android:layout_width="284dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:layout_weight="0"
+            android:background="#00000000"
+            android:contentDescription="@string/button_to_display_a_list"
+            app:srcCompat="@drawable/memo_listview"
+            tools:ignore="RedundantDescriptionCheck" />
+
+
+        <ImageButton
+            android:id="@+id/imageButtonSetting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="0"
+            android:background="#00000000"
+            android:contentDescription="@string/button_to_display_a_list_of_setting"
+            app:srcCompat="@drawable/memo_setting"
+            tools:ignore="RedundantDescriptionCheck" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvContacts"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/navbarLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
