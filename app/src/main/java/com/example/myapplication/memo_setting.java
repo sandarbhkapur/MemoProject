@@ -18,9 +18,9 @@ public class memo_setting extends AppCompatActivity {
         setContentView(R.layout.activity_memo_setting);
         initListButton();
         initSettingsButton();
+        initSettings();
         initSortByClick();
         initSortOrderClick();
-        initSettings();
     }
 
     private void initListButton(){
@@ -54,11 +54,14 @@ public class memo_setting extends AppCompatActivity {
                 .getString("sortOrder", "ASC");
         RadioButton rbSubject = findViewById(R.id.radioSubject);
         RadioButton rbImportance = findViewById(R.id.radioImportance);
+        RadioButton rbDate = findViewById(R.id.radioDate);
 
         if (sortBy.equalsIgnoreCase("subject")) {
             rbSubject.setChecked(true);
-        } else {
+        } else if (sortBy.equalsIgnoreCase("importance")) {
             rbImportance.setChecked(true);
+        } else {
+            rbDate.setChecked(true);
         }
 
         RadioButton rbAscending = findViewById(R.id.radioAscending);
@@ -73,17 +76,22 @@ public class memo_setting extends AppCompatActivity {
     private void initSortByClick() {
         RadioGroup rgSortBy = findViewById(R.id.radioGroupSortBy);
         rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 RadioButton rbSubject = findViewById(R.id.radioSubject);
+                RadioButton rbImportance = findViewById(R.id.radioImportance);
                 if (rbSubject.isChecked()) {
                     getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
                             .putString("sortField", "subject").apply();
-                } else {
+                } else if (rbImportance.isChecked()){
                     getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
                             .putString("sortField", "importance").apply();
                 }
+                else{
+                    getSharedPreferences("MyMemoListPreferences", Context.MODE_PRIVATE).edit()
+                            .putString("sortField", "date").apply();
+                }
+
             }
         });
     }

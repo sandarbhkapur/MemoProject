@@ -49,9 +49,9 @@ public class MemoList extends AppCompatActivity {
         try{
             ds.open();
             String sortBy = getSharedPreferences("MyMemoListPreferences",
-                    Context.MODE_PRIVATE).getString("sortfield", "subject");
+                    Context.MODE_PRIVATE).getString("sortField", "subject");
             String sortOrder = getSharedPreferences("MyMemoListPreferences",
-                    Context.MODE_PRIVATE).getString("sortorder", "ASC");
+                    Context.MODE_PRIVATE).getString("sortOrder", "ASC");
             memos = ds.getMemos(sortBy,sortOrder);
             ds.close();
             RecyclerView memoList = findViewById(R.id.rvContacts);
@@ -67,15 +67,14 @@ public class MemoList extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
 
         String sortBy = getSharedPreferences("MyMemoListPreferences",
-                Context.MODE_PRIVATE).getString("sortfield", "subject");
+                Context.MODE_PRIVATE).getString("sortField", "subject");
         String sortOrder = getSharedPreferences("MyMemoListPreferences",
-                Context.MODE_PRIVATE).getString("sortorder", "ASC");
+                Context.MODE_PRIVATE).getString("sortOrder", "ASC");
         MemoDataSource ds = new MemoDataSource(this);
         try {
             ds.open();
@@ -101,7 +100,6 @@ public class MemoList extends AppCompatActivity {
             Toast.makeText(this, "Error retrieving memos", Toast.LENGTH_LONG).show();
         }
     }
-
 
     private void initListButton(){
         ImageButton ibList = findViewById(R.id.imageButtonList);

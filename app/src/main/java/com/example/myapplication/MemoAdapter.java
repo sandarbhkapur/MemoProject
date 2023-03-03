@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.format.DateFormat;
@@ -85,7 +86,7 @@ public class MemoAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MemoViewHolder cvh = (MemoViewHolder) holder;
         cvh.getMemoTextSubject().setText(memoData.get(position).getSubject());
         //Displaying Date value in list_item
@@ -101,7 +102,7 @@ public class MemoAdapter extends RecyclerView.Adapter {
         }
         else if(currentRating == 2)
         {
-            String priority = "NORMAl";
+            String priority = "NORMAL";
             cvh.getMemoTextRating().setText(priority);
             ((MemoViewHolder) holder).textRating.setTextColor(Color.BLACK);
         }
