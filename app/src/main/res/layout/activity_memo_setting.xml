@@ -6,77 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".memo_setting">
 
-    <LinearLayout
-        android:id="@+id/navbar"
-        android:layout_width="396dp"
-        android:layout_height="79dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/navbar_background"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="5dp">
-
-        <ImageButton
-            android:id="@+id/imageButtonList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/button_to_display_a_list"
-            app:srcCompat="@drawable/ic_launcher_list_foreground"
-            tools:ignore="RedundantDescriptionCheck" />
-
-
-        <ImageButton
-            android:id="@+id/imageButtonSetting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/button_to_display_a_list_of_setting"
-            app:srcCompat="@drawable/ic_launcher_setting_foreground"
-            tools:ignore="RedundantDescriptionCheck" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Sort Memo By:"
+        android:fontFamily="monospace"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
         android:id="@+id/radioGroupSortBy"
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/navbar"
+        android:background="@drawable/memo_list_outline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="MissingConstraints">
 
         <RadioButton
             android:id="@+id/radioSubject"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Subject" />
+            android:fontFamily="monospace"
+            android:text="Subject"
+            android:textColor="@color/black" />
 
         <RadioButton
             android:id="@+id/radioImportance"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Importance" />
+            android:fontFamily="monospace"
+            android:text="Importance"
+            android:textColor="@color/black" />
 
         <RadioButton
             android:id="@+id/radioDate"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Date" />
+            android:fontFamily="monospace"
+            android:text="Date"
+            android:textColor="@color/black" />
 
 
     </RadioGroup>
@@ -86,40 +66,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/black"
         android:text="Sort Order:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupSortBy"
         tools:ignore="MissingConstraints,NotSibling" />
 
     <RadioGroup
         android:id="@+id/radioGroupSortOrder"
-        android:layout_width="381dp"
+        android:layout_width="wrap_content"
         android:layout_height="108dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/navbar"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        android:background="@drawable/memo_list_outline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="MissingConstraints">
 
         <RadioButton
             android:id="@+id/radioAscending"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Ascending" />
+            android:fontFamily="monospace"
+            android:text="Ascending"
+            android:textColor="@color/black" />
 
         <RadioButton
             android:id="@+id/radioDescending"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Descending" />
+            android:fontFamily="monospace"
+            android:text="Descending"
+            android:textColor="@color/black" />
     </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/navbarLayout"
+        android:layout_width="415dp"
+        android:layout_height="75dp"
+        android:background="#481414"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/imageButtonList"
+            android:layout_width="284dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:layout_weight="0"
+            android:background="#00000000"
+            android:contentDescription="@string/button_to_display_a_list"
+            app:srcCompat="@drawable/memo_listview"
+            tools:ignore="RedundantDescriptionCheck" />
+
+
+        <ImageButton
+            android:id="@+id/imageButtonSetting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="0"
+            android:background="#00000000"
+            android:contentDescription="@string/button_to_display_a_list_of_setting"
+            app:srcCompat="@drawable/memo_setting"
+            tools:ignore="RedundantDescriptionCheck" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
